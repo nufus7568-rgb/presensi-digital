@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Absensi Digital QR</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Library QR Code -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+    <!-- Library Scanner QR -->
+    <script src="https://unpkg.com/html5-qrcode" type="text/javascript"></script>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="logo">
+            <span>QR</span> ABSENSI
+        </div>
+
+        <div class="nav-menu">
+            <a href="#home">Home</a>
+            <a href="#buatqr">Buat QR</a>
+            <a href="#scan">Scan</a>
+            <a href="#data">Data Absensi</a>
+        </div>
+    </nav>
+
+
+    <!-- HOME -->
+    <section id="home" class="hero">
+
+        <div class="hero-text">
+            <p class="label">DIGITAL ATTENDANCE SYSTEM</p>
+
+            <h1>
+                Absensi Digital
+                <span>QR Code</span>
+            </h1>
+
+            <p>
+                Sistem absensi mahasiswa menggunakan QR Code.
+                Masukkan NIM, buat QR Code, kemudian scan QR
+                untuk mencatat kehadiran.
+            </p>
+
+            <div class="hero-buttons">
+                <a href="#buatqr" class="btn">Buat QR</a>
+                <a href="#scan" class="btn-outline">Scan Absensi</a>
+            </div>
+        </div>
+
+        <div class="hero-card">
+
+            <div class="qr-decoration">
+                <div class="corner top-left"></div>
+                <div class="corner top-right"></div>
+                <div class="corner bottom-left"></div>
+                <div class="corner bottom-right"></div>
+
+                <div class="qr-icon">QR</div>
+            </div>
+
+            <h3>SCAN TO ATTEND</h3>
+            <p>Absensi cepat dengan QR Code</p>
+
+        </div>
+
+    </section>
+
+
+    <!-- BUAT QR -->
+    <section id="buatqr" class="section">
+
+        <div class="section-title">
+            <p>STEP 01</p>
+            <h2>Buat <span>QR Code</span></h2>
+        </div>
+
+        <div class="qr-container">
+
+            <div class="input-card">
+
+                <h3>Masukkan NIM</h3>
+
+                <p>
+                    Masukkan NIM mahasiswa untuk membuat
+                    QR Code absensi.
+                </p>
+
+                <input
+                    type="text"
+                    id="nimInput"
+                    placeholder="Contoh: 230101001"
+                    autocomplete="off"
+                >
+
+                <button onclick="buatQR()" class="btn">
+                    Buat QR Code
+                </button>
+
+                <p id="pesanQR" class="message"></p>
+
+            </div>
+
+
+            <div class="qr-result">
+
+                <h3>QR Code Anda</h3>
+
+                <div id="qrcode"></div>
+
+                <p id="qrNim">
+                    QR Code akan muncul di sini
+                </p>
+
+                <button onclick="downloadQR()" class="download-btn">
+                    Download QR
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- SCAN QR -->
+    <section id="scan" class="section scan-section">
+
+        <div class="section-title">
+            <p>STEP 02</p>
+            <h2>Scan <span>Absensi</span></h2>
+        </div>
+
+        <div class="scanner-card">
+
+            <div id="reader"></div>
+
+            <div class="scan-info">
+                <h3>Scan QR Code</h3>
+
+                <p>
+                    Arahkan kamera ke QR Code mahasiswa
+                    untuk mencatat kehadiran.
+                </p>
+
+                <button onclick="mulaiScanner()" class="btn">
+                    Mulai Scan
+                </button>
+
+                <p id="scanResult" class="message"></p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- DATA ABSENSI -->
+    <section id="data" class="section">
+
+        <div class="section-title">
+            <p>STEP 03</p>
+            <h2>Data <span>Absensi</span></h2>
+        </div>
+
+        <div class="table-card">
+
+            <div class="table-header">
+
+                <div>
+                    <h3>Daftar Kehadiran</h3>
+                    <p>Data absensi mahasiswa hari ini</p>
+                </div>
+
+                <button onclick="hapusSemua()" class="delete-all">
+                    Hapus Semua
+                </button>
+
+            </div>
+
+
+            <div class="table-wrapper">
+
+                <table>
+
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>NIM</th>
+                            <th>Tanggal</th>
+                            <th>Jam</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="tabelAbsensi">
+                    </tbody>
+
+                </table>
+
+            </div>
+
+            <div id="kosong" class="empty">
+                Belum ada data absensi.
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
+    <footer>
+
+        <h3>
+            <span>QR</span> ABSENSI DIGITAL
+        </h3>
+
+        <p>
+            Sistem Absensi Mahasiswa Berbasis QR Code
+        </p>
+
+        <small>
+            © 2026 Absensi Digital
+        </small>
+
+    </footer>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
